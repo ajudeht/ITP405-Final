@@ -26,6 +26,20 @@
       <h3>No Boards</h3>
     @endforelse
   </div>
+  <h1>Shared Boards</h1>
+  <div class="board-holder">
+  @forelse($shares as $board)
+      <a href="./boards/{{$board->uuid}}/" class="board-card">
+        <div class="board-card-inner">
+          <div class="board-title">
+            {{$board->title}}
+          </div>
+        </div>
+      </a>
+      @empty
+      <h3>No Shared Boards</h3>
+    @endforelse
+  </div>
   <br />
 
 </div>

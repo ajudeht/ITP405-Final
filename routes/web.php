@@ -23,7 +23,11 @@ Route::get('/logout', 'LoginController@logout');
 Route::get('/boards/{id}', ['uses' =>'BoardController@index']);
 
 Route::post('/create-board', 'BoardController@create');
+Route::get('/delete-board/{id}', 'BoardController@delete');
+Route::post('/share-board', 'BoardController@share');
+
 Route::post('/create-task', 'TaskController@create');
+Route::get('/delete-task/{id}', 'TaskController@delete');
 Route::post('/update-task-status', 'TaskController@updateStatus');
 
 // Route::get('/boards', 'BoardListController@index');
