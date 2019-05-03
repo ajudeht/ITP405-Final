@@ -60,12 +60,31 @@ h1, h2, h3, h4, h5, h6{
   flex-wrap: wrap;
 }
 
+.board-holder{
+  // background: linear-gradient(0deg, #00000003, #3e3e3c0a);
+  background-color: #00000003;
+  padding: .5em;
+  border-radius: 7px;
+}
+
 .task-column {
   display: flex;
   flex-wrap: wrap;
   max-width: 300px;
 }
 
+.login-errors{
+  background-color: #f3dddd66;
+    border: 1px solid #ad3a3a33;
+    border-radius: 3px;
+    color: #ad3a3a;
+    padding: 1em;
+    font-family: "Space Grotesk";
+    font-weight: 500;
+    li{
+      margin-left: 1em;
+    }
+}
 .board-card{
   margin: .25em;
   box-shadow: 0px 1px 2px 0px #00000017;
@@ -177,6 +196,10 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
   flex-grow: 1;
 }
 
+.lined{
+  border-bottom: 1px solid #00000017;
+  padding-bottom: .5em;
+}
 
 .form-group{
   margin-bottom: 1em;
@@ -195,7 +218,7 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
     border-radius: 2px;
     flex-basis: 100%;
     background-color: #f6f6f6;
-    margin: .5em;
+    margin-top: .5em;
     margin-bottom: 1em;
     font-size: .8em;
     color: #646464;

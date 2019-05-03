@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -19,7 +20,7 @@ class LoginController extends Controller
     if ($logSuccess){
       return redirect('/');
     } else {
-      return redirect('login');
+      return view('login', ["message"=>"Password or Email Incorrect"]);
     }
   }
   public function logout(){

@@ -12,7 +12,7 @@
   </div>
 </div>
 <div class="body-main">
-  <h1>My Boards</h1>
+  <h2 class="lined">My Boards</h2>
   <div class="board-holder">
   @forelse($boards as $board)
       <a href="./boards/{{$board->uuid}}/" class="board-card">
@@ -23,10 +23,13 @@
         </div>
       </a>
       @empty
-      <h3>No Boards</h3>
+      <h3 style="text-align: center;
+    flex-grow: 1;
+    font-weight: 400;
+    color: gray;">No Boards</h3>
     @endforelse
   </div>
-  <h1>Shared Boards</h1>
+  <h2 class="lined">Shared Boards</h2>
   <div class="board-holder">
   @forelse($shares as $board)
       <a href="./boards/{{$board->uuid}}/" class="board-card">
@@ -37,7 +40,10 @@
         </div>
       </a>
       @empty
-      <h3>No Shared Boards</h3>
+      <h3 style="text-align: center;
+    flex-grow: 1;
+    font-weight: 400;
+    color: gray;">No Shared Boards</h3>
     @endforelse
   </div>
   <br />

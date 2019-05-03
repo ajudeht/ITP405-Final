@@ -372,10 +372,30 @@ h6 {
   flex-wrap: wrap;
 }
 
+.board-holder {
+  background-color: #00000003;
+  padding: 0.5em;
+  border-radius: 7px;
+}
+
 .task-column {
   display: flex;
   flex-wrap: wrap;
   max-width: 300px;
+}
+
+.login-errors {
+  background-color: #f3dddd66;
+  border: 1px solid #ad3a3a33;
+  border-radius: 3px;
+  color: #ad3a3a;
+  padding: 1em;
+  font-family: "Space Grotesk";
+  font-weight: 500;
+}
+
+.login-errors li {
+  margin-left: 1em;
 }
 
 .board-card {
@@ -496,6 +516,11 @@ textarea {
   flex-grow: 1;
 }
 
+.lined {
+  border-bottom: 1px solid #00000017;
+  padding-bottom: 0.5em;
+}
+
 .form-group {
   margin-bottom: 1em;
   display: flex;
@@ -516,7 +541,7 @@ textarea {
   border-radius: 2px;
   flex-basis: 100%;
   background-color: #f6f6f6;
-  margin: 0.5em;
+  margin-top: 0.5em;
   margin-bottom: 1em;
   font-size: 0.8em;
   color: #646464;

@@ -121,10 +121,10 @@
                     <p>
                       <b>Shared With: </b>
                       @forelse($shares as $share)
-                          <span>{{$share->email}}, </span>
-                          @empty
-                          <span>Nobody</span>
-                        @endforelse
+                        <span>{{$share->email}}@if (!$loop->last)<span>, </span>@endif</span>
+                        @empty
+                        <span>Nobody</span>
+                      @endforelse
                     </p>
                   </div>
                   <input type="submit" value="Share" class="button submit">

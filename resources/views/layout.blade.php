@@ -19,8 +19,8 @@
           @if (Auth::check())
             <a class="btn btn-light" href="/logout">Log Out</a>
           @else
-            <a class="btn btn-light" href="/login">Login</a>
-            <a class="btn btn-light" href="/signup">Sign Up</a>
+            <!-- <a class="btn btn-light" href="/login">Login</a>
+            <a class="btn btn-light" href="/signup">Sign Up</a> -->
           @endif
         </div>
     </div>

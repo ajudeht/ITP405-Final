@@ -3,9 +3,10 @@
 @section('title', 'Login')
 
 @section('main')
-<div class="body-main">
+<div class="modal__overlay">
+  <div class="modal__container" role="dialog" aria-modal="true">
   <h1>Login</h1>
-  <p>Don't have an account? Please <a href="/signup">Signup</a></p>
+  <p>Don't have an account? Please <a href="/signup">Sign Up</a></p>
   <form method="post">
     @csrf
     <div class="form-group">
@@ -16,7 +17,13 @@
       <label for="password">Password</label>
       <input type="password" id="password" name="password" class="form-control">
     </div>
+    @isset($message)
+      <ul class="login-errors">
+        {{$message}}
+      </ul>
+    @endisset
     <input type="submit" value="Login" class="button submit">
   </form>
+</div>
 </div>
 @endsection
