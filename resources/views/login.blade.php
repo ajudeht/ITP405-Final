@@ -3,6 +3,10 @@
 @section('title', 'Login')
 
 @section('main')
+<div style="position: absolute; top: 0;
+bottom: 0; width: 100%; background-image: url('/cross-xxl.png'); background-size: cover;">
+
+</div>
 <div class="modal__overlay">
   <div class="modal__container" role="dialog" aria-modal="true">
   <h1>Login</h1>

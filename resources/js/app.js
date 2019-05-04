@@ -1,5 +1,30 @@
+window.statusChange = function statusChange(e){
+  var taskuuid = [...e.target.form.elements].filter(e=>encodeURIComponent(e.name) == "uuid")[0].value;
+  var token = [...e.target.form.elements].filter(e=>encodeURIComponent(e.name) == "_token")[0].value;
 
+  var status = e.target.value;
 
-function statusChange(e){
-  console.log(e.target.form.elements);
+  fetch("/update-task-status", {
+     headers: {
+       "Content-Type": "application/json",
+       "Accept": "application/json, text-plain, */*",
+       "X-Requested-With": "XMLHttpRequest",
+       "X-CSRF-TOKEN": token
+      },
+     method: 'post',
+     credentials: "same-origin",
+     body: JSON.stringify({
+       task_uuid : taskuuid,
+       status : status,
+       _token : token
+     })
+   }).then((data) => {}).catch((e)=>{ console.log(e) });
+
+}
+
+window.submitOnEnter = function submitOnEnter(event){
+    if(event.which === 13){
+        event.target.form.dispatchEvent(new Event("submit", {cancelable: true}));
+        event.preventDefault();
+    }
 }

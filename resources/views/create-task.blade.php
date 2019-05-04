@@ -6,7 +6,7 @@
       <p>
         Give your task a name so you can find it later
       </p>
-      <input placeholder="Task Title" type="text" id="title" name="title" class="form-control">
+      <input placeholder="Task Title" type="text" id="title" name="title" class="form-control" required>
     </div>
     <div class="form-group">
       <label for="description">Description</label>

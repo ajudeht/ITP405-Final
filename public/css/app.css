@@ -101,10 +101,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 
 .modal__container {
@@ -319,17 +320,54 @@ html {
 }
 
 body {
-  background-color: #fafaf6;
+  background-color: white;
   padding: 0;
   margin: 0;
   font-family: "IBM Plex Sans";
   min-height: 100vh;
 }
 
-@media (max-width: 576px) {
-  .board-card {
+@media (max-width: 583px) {
+  .task-column {
     flex-grow: 1;
   }
+
+  .board-card,
+  .board-add-card {
+    flex-grow: 1;
+  }
+}
+
+@media (max-width: 843px) {
+  .board-card,
+  .board-add-card {
+    flex-basis: calc(50% - 0.7em) !important;
+  }
+}
+
+.board-add-card {
+  border: 1px dashed #7c7c7c45;
+  background-color: #00000003;
+  min-width: 250px;
+  border-radius: 4px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  flex-basis: calc(33.333% - 0.63em);
+}
+
+.add-card-icon {
+  font-size: 2em;
+  font-weight: 100;
+  color: #000000;
+  background-color: white;
+  padding: 0.25em;
+  /* border: 1px solid silver; */
+  border-radius: 1em;
+  box-shadow: 0px 1px 3px 0px #0000001a;
+  margin: 1em;
 }
 
 .body-main {
@@ -345,11 +383,19 @@ body {
 .header {
   background-color: white;
   box-shadow: 1px 1px 2px 0px #00000017;
+  -webkit-transform: translateZ(10px);
+          transform: translateZ(10px);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1;
 }
 
 .header-inner {
   display: flex;
   height: 50px;
+  justify-content: center;
   align-items: center;
   padding-left: 15px;
   padding-right: 15px;
@@ -376,12 +422,37 @@ h6 {
   background-color: #00000003;
   padding: 0.5em;
   border-radius: 7px;
+  box-shadow: inset 0px 1px 2px 1px #00000005;
+}
+
+.fab {
+  font-weight: 200;
+  font-family: "Material Icons";
+  font-size: 1.25em;
+  margin-bottom: 0;
+  padding: 1em;
+  background-color: #282828;
+  color: white;
+  border-radius: 2em;
+  position: fixed;
+  bottom: 1.5em;
+  right: 1.5em;
+  box-shadow: 0px 1px 2px 1px #00000038;
+  cursor: pointer;
 }
 
 .task-column {
   display: flex;
-  flex-wrap: wrap;
-  max-width: 300px;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  max-height: calc(100vh - 173px - 4em);
+  padding: 1em;
+  border: 1px dashed silver;
+  border-radius: 5px;
+  background-color: #00000003;
+  min-width: 0;
+  flex-basis: 20%;
+  min-width: calc(250px + 2em);
 }
 
 .login-errors {
@@ -404,12 +475,12 @@ h6 {
   border: 1px solid #f0f0f0;
   border-radius: 4px;
   padding-top: 100px;
-  background-image: url("/abstract.jpg");
+  background-image: url("/cross.png");
   background-size: cover;
   background-position: center;
   overflow: hidden;
   min-width: 250px;
-  flex-basis: 25%;
+  flex-basis: calc(33.333% - 0.63em);
   text-decoration: none;
   color: inherit;
   transition: box-shadow 0.15s cubic-bezier(0.02, 0.87, 0.46, 1), -webkit-transform 0.15s cubic-bezier(0.02, 0.87, 0.46, 1);
@@ -480,19 +551,20 @@ h6 {
 }
 
 .delete-board-button {
+  position: relative;
   text-decoration: none;
   font-family: "Material Icons";
   color: white;
-  font-size: 1.25em;
-  /* border: 2px solid white; */
+  font-size: 1em;
+  border: 2px solid #ec5d01c4;
   background-color: #ff6400;
-  padding: 0.35em;
-  border-radius: 1em;
+  padding: 0.46em;
+  border-radius: 2em;
   position: relative;
-  top: 1px;
+  top: -5px;
   float: right;
   margin-right: 0.35em;
-  margin-left: 0.25em;
+  margin-left: 0.45em;
   cursor: pointer;
 }
 
@@ -508,12 +580,28 @@ input[type=text],
 input[type=email],
 input[type=password],
 textarea {
-  border: 0px;
+  border: 1px solid #d5d5d5cc;
   box-shadow: inset 0px 0 1px 0px #000000d6;
   border-radius: 2px;
   padding: 0.75em;
   font-size: 0.9em;
   flex-grow: 1;
+}
+
+.container-fluid {
+  background-color: #fafaf6;
+  padding-top: 50px;
+  min-height: calc(100vh - 50px);
+}
+
+.app-footer {
+  background-color: white;
+  padding-bottom: 150px;
+}
+
+input[type=submit],
+button {
+  -webkit-appearance: none;
 }
 
 .lined {
@@ -549,7 +637,7 @@ textarea {
 }
 
 .intro-bar {
-  background-color: #ffcf00;
+  background-color: #ffe700;
 }
 
 .head-bar {
@@ -570,11 +658,13 @@ textarea {
   font-size: 20px;
   font-family: "Space Grotesk";
   font-weight: 700;
-  color: #464236;
+  color: black;
   max-width: 500px;
   padding: 0.5em;
   padding-top: 3em;
   padding-bottom: 2em;
+  margin: 0px auto;
+  text-align: center;
 }
 
 .back-arrow {
@@ -599,12 +689,12 @@ textarea {
   box-shadow: 0px 1px 2px 0px #00000017;
   border: 1px solid #f0f0f0;
   border-radius: 4px;
-  background-color: #e0ded5;
+  background-color: #f3f3f3;
   background-size: cover;
   background-position: center;
   overflow: hidden;
   min-width: 250px;
-  flex-basis: 25%;
+  flex-grow: 1;
   text-decoration: none;
   color: inherit;
   transition: box-shadow 0.15s cubic-bezier(0.02, 0.87, 0.46, 1), -webkit-transform 0.15s cubic-bezier(0.02, 0.87, 0.46, 1);
@@ -614,18 +704,40 @@ textarea {
 
 .task-card-desc {
   padding: 1em;
+  padding: 1.5em;
+  color: #525252;
+  font-size: 0.75em;
 }
 
 .task-card-inner {
   padding: 1em;
   background-color: white;
   display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  min-width: 0;
 }
 
 .task-title {
   font-family: "Space Grotesk";
   font-weight: 900;
   flex-grow: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-right: 1em;
+  min-width: 0;
+  position: relative;
+}
+
+.task-title::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 40px;
+  width: 100%;
+  background: linear-gradient(90deg, #ffffff00 70%, white 100%);
 }
 
 /* Status Buttons */

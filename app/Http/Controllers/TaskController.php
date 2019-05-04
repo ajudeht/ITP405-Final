@@ -15,8 +15,8 @@ class TaskController extends Controller
     $board = DB::table('boards')->where('uuid', request('board_uuid'))->first();
     DB::table('tasks')->insert([
       'board_id' => $board->id,
-      'title' => request('title'),
-      'description' => request('description'),
+      'title' => empty(request('title')) ? "Untitled Task" : request('title'),
+      'description' => empty(request('description')) ? "" : request('description'),
       'task_status' => 0,
       'parent_id' => null,
       'uuid' => Str::uuid()

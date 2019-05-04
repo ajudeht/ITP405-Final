@@ -11,21 +11,19 @@
 <div class="head-bar">
   <div class="body-full">
     <span class="head-title">{{$board->title}}</span>
-    <span onclick="MicroModal.show('modal-1')" class="button outline" style="font-weight: 700;
-    font-family: Space Grotesk;
-    font-size: .9em;
-    margin-bottom: 0;">Add a Task</span>
     <a onclick="MicroModal.show('modal-2')" class="delete-board-button">delete</a>
     <span onclick="MicroModal.show('modal-3')" class="button blue" style="float:right; font-weight: 700;
     font-family: Space Grotesk;
-    font-size: .9em;
-    margin-bottom: 0;">Share</span>
+    font-size: .85em;
+    margin-bottom: 0;
+    top: -5px;
+    position: relative;">Share</span>
   </div>
 </div>
 <div class="body-full">
-
+      <span onclick="MicroModal.show('modal-1')" class="fab">add</span>
   <div class="task-holder">
-    <!-- <div class="task-column"> -->
+    <div class="task-column">
 
     @forelse($tasks as $task)
 
@@ -34,7 +32,7 @@
           <div class="task-title">
             {{$task->title}}
           </div>
-          <form onchange="statusChange(event)" name="status">
+          <form style="min-width: 116px;" onchange="statusChange(event)" name="status">
             @csrf
             <input type="hidden" name="uuid" value="{{$task->uuid}}"/>
             <label class="container r">
@@ -51,15 +49,20 @@
             </label>
           </form>
         </div>
+        @empty(!$task->description)
         <div class="task-card-desc">
           {{$task->description}}
         </div>
+        @endempty
       </div>
 
         @empty
-        <h3>No Tasks</h3>
+        <h3 style="text-align: center;
+    flex-grow: 1;
+    font-weight: 400;
+    color: gray;">No Tasks</h3>
       @endforelse
-      <!-- </div> -->
+      </div>
   </div>
 </div>
 
@@ -111,7 +114,10 @@
               <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
             </header>
             <main class="modal__content" id="modal-1-content">
-
+          <img style="display: block;
+    width: 100%;
+    padding-bottom: 1em;
+    margin: 0px auto;" src="/illust-4-alt.png"/>
               <form action="/share-board" method="post" >
                   @csrf
                     <input type="hidden" id="board_uuid" name="board_uuid" value={{$board->uuid}}>
