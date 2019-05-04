@@ -27,7 +27,7 @@
 
     @forelse($tasks as $task)
 
-      <div class="task-card">
+      <div data-status="{{$task->task_status}}" class="task-card faster">
         <div class="task-card-inner">
           <div class="task-title">
             {{$task->title}}

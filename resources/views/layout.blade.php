@@ -31,6 +31,8 @@
   @yield('main')
 
   </div>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/tooltip.js"></script>
   <script src="/js/micromodal.min.js"></script>
   <script src="/js/app.js"></script>
 </body>

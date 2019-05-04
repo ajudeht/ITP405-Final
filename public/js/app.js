@@ -101,7 +101,7 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-window.statusChange = function statusChange(e) {
+window.statusChange = function (e) {
   var taskuuid = _toConsumableArray(e.target.form.elements).filter(function (e) {
     return encodeURIComponent(e.name) == "uuid";
   })[0].value;
@@ -128,15 +128,56 @@ window.statusChange = function statusChange(e) {
   }).then(function (data) {})["catch"](function (e) {
     console.log(e);
   });
+  var card = findAncestor(e.target, "task-card");
+  animate(card, "swing");
+  card.setAttribute("data-status", status);
 };
 
-window.submitOnEnter = function submitOnEnter(event) {
+window.submitOnEnter = function (event) {
   if (event.which === 13) {
     event.target.form.dispatchEvent(new Event("submit", {
       cancelable: true
     }));
     event.preventDefault();
   }
+};
+
+window.popInit = function () {
+  var refs = document.querySelectorAll('.container');
+
+  _toConsumableArray(refs).map(function (e) {
+    var input = e.querySelector('input');
+    var bubble = e.querySelector('span');
+    var tt = new Tooltip(bubble, {
+      placement: 'top',
+      title: "Mark Task " + ["Incomplete", "In Progress", "Complete"][input.value],
+      container: document.body,
+      offset: "-4, 0"
+    });
+  });
+};
+
+window.popInit();
+
+window.animate = function (element, animationName, callback) {
+  var node = element;
+  node.classList.add('animated', animationName);
+
+  function handleAnimationEnd() {
+    node.classList.remove('animated', animationName);
+    node.removeEventListener('animationend', handleAnimationEnd);
+    if (typeof callback === 'function') callback();
+  }
+
+  node.addEventListener('animationend', handleAnimationEnd);
+};
+
+window.findAncestor = function (el, cls) {
+  while ((el = el.parentElement) && !el.classList.contains(cls)) {
+    ;
+  }
+
+  return el;
 };
 
 /***/ }),
