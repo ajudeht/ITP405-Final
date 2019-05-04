@@ -14,7 +14,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
 
-  <title>@yield('title')</title>
+  <title>Janice | @yield('title')</title>
   <!-- yay! -->
   <link rel="stylesheet" href="/css/app.css">
 </head>

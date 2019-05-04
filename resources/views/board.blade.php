@@ -60,8 +60,13 @@
         <h3 style="text-align: center;
     flex-grow: 1;
     font-weight: 400;
-    color: gray;">No Tasks</h3>
+    color: gray;">No Tasks Yet</h3>
       @endforelse
+      <div onclick="MicroModal.show('modal-1')" class="board-add-card">
+        <div class="mi add-card-icon">
+          add
+        </div>
+      </div>
       </div>
   </div>
 </div>

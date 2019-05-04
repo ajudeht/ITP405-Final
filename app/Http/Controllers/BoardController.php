@@ -25,14 +25,15 @@ class BoardController extends Controller
 
   public function create(){
     $user = Auth::user();
+    $newUUID = Str::uuid();
     DB::table('boards')->insert([
       'title' => empty(request('title')) ? "Untitled Board" : request('title'),
       'description' => empty(request('description')) ? "" : request('description'),
       'user_id' => $user->id,
-      'uuid' => Str::uuid()
+      'uuid' => $newUUID
    ]);
 
-      return redirect('/');
+      return redirect('/boards/'.$newUUID);
   }
 
   public function share(){

@@ -5,9 +5,9 @@
 @section('main')
 <div class="intro-bar">
   <div class="body-main">
-          <img style="display: block; width: 85%; padding-top: 7em; margin: 0px auto;" src="illust-3.png"/>
+          <img style="display: block; width: 85%; padding-top: 10em; margin: 0px auto;" src="illust-3.png"/>
     <div class="intro-header">
-      <h2 style="padding-bottom: .75em;">Hey {{$user->name}}! All your task boards are saved here.</h2>
+      <h2 class="animated fadeInUp" style="padding-bottom: .75em;">Hey {{$user->name}}! All your task boards are saved here.</h2>
       <div onclick="MicroModal.show('modal-1')" class="button primary outline">Create New Board</div>
     </div>
   </div>
