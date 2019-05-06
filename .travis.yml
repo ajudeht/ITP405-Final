@@ -1,3 +1,13 @@
+os:
+  - linux
+
 language: php
-install:
-    - composer install
+
+php:
+  - '7.1'
+
+before_script:
+  - composer self-update
+  - composer install --no-interaction
+  - cp .env.travis .env
+  - phpenv rehash
